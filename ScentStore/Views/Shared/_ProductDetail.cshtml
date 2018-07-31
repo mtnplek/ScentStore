@@ -1,0 +1,31 @@
+﻿@model ScentStore.Models.Product
+
+<div class="col-md-6">
+    <dl>
+        <dt>Name</dt>
+        <dd>@Model.Name</dd>
+        <dt>Price</dt>
+        <dd>@Model.Price</dd>
+        <dt>In stock</dt>
+        <dd>@Model.InStock</dd>
+    </dl>
+</div>
+
+<div class="col-md-6">
+    @*@Html.ActionLink("Back to List", "His")*@
+    @Ajax.ActionLink("Hide details", "His", new AjaxOptions
+    {
+     UpdateTargetId = "ProductId",
+     InsertionMode = InsertionMode.Replace,
+     HttpMethod = "GET"
+    }
+)
+</div>
+
+
+
+<script>
+
+</script>
+
+

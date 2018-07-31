@@ -1,24 +1,236 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    font-family: minionpro-medium, Georgia, "Times New Roman", Times, serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #000000;
+    background-color: #ffffff;
+    overflow-x: hidden;
 }
 
-/* Set padding to keep content from hitting the edges */
+html {
+    min-height: 100%;
+}
+
+@media (max-width: 993px){
+
+    .proName{
+        display: none;
+    }
+
+    .proPrice{
+        display: none;
+    }
+
+    .proTable{
+        margin-bottom: 15px;
+    }
+
+}
+
+@media (max-width: 600px){
+
+    .banner{
+        display: none;
+    }
+}
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.top-cart {
+    float: right;
+    top: 1px;
+    margin-right: 20px;
+    margin-top: 15px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    color: grey;
+}
+
+.banner {
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-image: url('Perfumes.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 350px;
+}
+
+.top-navbar {
+    background-color: #ffffff;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    border-bottom: none;
+    background-repeat: no-repeat;
+}
+
+.bottom-navbar {
+    margin-bottom: 0px;
+    border-radius: 0px;
+    border-bottom: none;
+    background-color: #ffffff
+}
+
+.bottom-navbar ul li a {
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        color: #000000;
+        text-decoration: none;
+        position: relative;
+        z-index: 1;
+        font-family: minionpro-bold, Georgia, "Times New Roman", Times, serif;
+
+}
+
+.navbar-brand {
+    background-image: url('logo2.png');
+    background-size: 70px 70px;
+    height: 70px;
+    margin: -14px;
+    width: 70px;
+    color: powderblue;
+    /*margin-right: 15px;*/
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important; /* 50% of your logo width */
+    display: block;
+}
+
+.home-1 {
+    max-height: 100%;
+}
+
+
+#arrow {
+    display: block;
+    text-align: center;
+}
+
+#search-btn {
+    background-color: #333;
+    height: 27px;
+    font-size: 15px;
+    color: darkgoldenrod;
+}
+
+
+#addToCart {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+}
+
+#addToCart.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+     animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+.footer-hr {
+    border-width: 2px;
+    border-color: grey;
+}
+
+.footer-links li {
+    list-style: none;
+}
+
+a.linkColor {
+    color: grey;
+}
+
+.fa-facebook, .fa-facebook-square {
+    color: grey;
+}
+
+.fa-instagram, .fa-instagram-square {
+    color: grey;
+}
+
+.fa-twitter, .fa-twitter-square {
+    color: grey;
+}
+
+.fa-google, .fa-google-square {
+    color: grey;
+}
+
+#copy {
+    text-align: center;
+    color: grey;
 }

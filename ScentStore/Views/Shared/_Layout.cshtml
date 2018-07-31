@@ -3,13 +3,30 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Welcome to Scent.se - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" href="~/Content/logo2.png">
+
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default top-navbar">
+        <a href="@Url.Action("Index", "Home")" class="navbar-brand"></a>
+
+        @if (User.IsInRole("Admin") || User.IsInRole("User"))
+        {
+
+            <a href="@Url.Action("Index", "Cart")" class="glyphicon glyphicon-shopping-cart top-cart"></a>
+        }
+    </div>
+
+    <div class="banner">
+        <div class="col-md-offset-11 col-md-1">
+        </div>
+    </div>
+    <div class="navbar navbar-default bottom-navbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,23 +34,44 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("His", "His", "Home")</li>
+                    <li>@Html.ActionLink("Hers", "Hers", "Home")</li>
                 </ul>
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+        <br />
+        <br />
+        <hr class="footer-hr" />
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-7">
+                        <a href="https://www.facebook.com/" target="_blank" class="fa fa-facebook"></a>
+                        <a href="https://twitter.com/" target="_blank" class="fa fa-twitter"></a>
+                        <a href="https://www.google.se/" target="_blank" class="fa fa-google"></a>
+                        <a href="https://www.instagram.com" target="_blank" class="fa fa-instagram"></a>
+                    </div>
+                    @*You have to be logged in as user or admin to se the contact us link:*@
+                    @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                    {
+                        <div class="col-md-2 col-sm-2  col-xs-5 footer-links">
+                            <ul>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home", new { @class = "linkColor" })</li>
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+            <p id="copy">&copy; @DateTime.Now.Year - Scent.se</p>
         </footer>
     </div>
 

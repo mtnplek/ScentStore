@@ -1,0 +1,81 @@
+﻿@using ScentStore.Models;
+@model IEnumerable<ScentStore.Models.Product>
+
+@{
+    ViewBag.Title = "His";
+}
+
+<br />
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="row">
+            <div class="col-md-3 proName">
+                <b>Product</b>
+            </div>
+            <div class="col-md-3 proPrice">
+                <b>Price</b>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                @using (Html.BeginForm("His", "Home", FormMethod.Get))
+                {
+                    <p>
+                        Find product: @Html.TextBox("searchString")
+                        <input type="submit" value="Search" />
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+@foreach (Product item in Model)
+{
+    <div class="row proTable" id="@("ProductId" + item.ID)">
+        <div class="col-md-3">
+            @Html.DisplayFor(ModelItem => item.Name)
+        </div>
+        <div class="col-md-3">
+            @Html.DisplayFor(ModelItem => item.Price)
+        </div>
+        <div class="col-md-3">
+            @Ajax.ActionLink("Details", "ProductDetails", new { id = item.ID },
+          new AjaxOptions
+          {
+              UpdateTargetId = "ProductId" + item.ID,
+              InsertionMode = InsertionMode.Replace
+          }
+        )
+        </div>
+        @if (User.IsInRole("Admin") || User.IsInRole("User"))
+        {
+            <div class="col-md-3">
+                <button type="button" class="btn btn-default" onclick="success()">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
+                </button>
+            </div>
+        }
+        <div id="addToCart">@Html.DisplayFor(ModelItem => item.Name) added to cart</div>
+    </div>
+}
+
+<br />
+<br />
+<br />
+
+<script>
+    function success() {
+        var x = document.getElementById("addToCart");
+
+        x.className = "show";
+
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    };
+</script>
+
+

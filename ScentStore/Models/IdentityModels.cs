@@ -29,5 +29,7 @@ namespace ScentStore.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Product> Products { get; set; }
     }
 }

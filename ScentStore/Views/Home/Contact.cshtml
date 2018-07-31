@@ -1,17 +1,59 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<style>
+    #map {
+        width: 100%;
+        height: 400px;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%)
+    }
+</style>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div>
+    <h2 class="text-center">You can find us here</h2>
+    <div class="glyphicon glyphicon-arrow-down" id="arrow"></div>
+    <br />
+
+    <div id="map" style="width:100%;height:400px;">Map</div>
+</div>
+
+<script>
+    function myMap() {
+        var myLatLng = { lat: 56.887769, lng: 14.802749 };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'This is us!'
+        });
+    }
+</script>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <address>
+            Seminarievägen 33<br />
+            35238, Växjö Sweden<br />
+            <abbr title="Phone">Phone:</abbr>
+            076-325 00 23
+        </address>
+    </div>
+
+    <div class="col-md-6">
+
+    </div>
+    <address>
+        <strong>Support:</strong>   <a href="mailto:support@scent.se">support@scent.se</a><br />
+        <strong>Marketing:</strong> <a href="mailto:marketing@scent.se">marketing@scent.se</a>
+    </address>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfo5JDDmzizfqGiFog3IRtBYAShbKvQUI&callback=myMap"></script>
